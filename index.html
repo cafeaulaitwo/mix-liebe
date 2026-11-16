@@ -1,1 +1,91 @@
-index.html
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f2e9">
+<title>MIX LIEBE REZEPT</title>
+<style>
+:root{--cream:#f7f3eb;--paper:#fffdf8;--green:#667b62;--deep:#344b3b;--gold:#b39455;--ink:#30352f;--muted:#77786f;--line:#e7e0d3}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+header{background:linear-gradient(135deg,#344b3b,#71846b);color:#fff;padding:34px 18px 28px;text-align:center}
+.brand{font-size:clamp(30px,7vw,48px);letter-spacing:3px;margin:0}.subtitle{font:12px Arial,sans-serif;letter-spacing:4px;margin:10px 0 0;color:#f0e6d1}
+nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:14px;background:#fffdf8;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+button,.button{border:0;border-radius:24px;padding:11px 17px;background:var(--green);color:#fff;font: bold 13px Arial,sans-serif;cursor:pointer}
+button.secondary{background:#eee8dc;color:var(--deep)}button.gold{background:var(--gold)}button.danger{background:#9a5148}
+main{max-width:1050px;margin:28px auto;padding:0 16px 50px}.intro{text-align:center;margin:24px auto 32px;max-width:680px}.intro h2{color:var(--deep);font-size:30px;margin-bottom:8px}.intro p{color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:20px}.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 5px 18px #45351b0b}.card img{width:100%;height:190px;object-fit:cover;background:#e6e0d4}.cardbody{padding:17px}.card h3{color:var(--deep);font-size:22px;margin:0 0 8px}.meta{font:12px Arial,sans-serif;color:var(--muted);line-height:1.8}
+.detail{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden}.hero{width:100%;max-height:390px;object-fit:cover;display:block;background:#e6e0d4}.detailcontent{padding:clamp(18px,4vw,34px)}.detail h2{font-size:32px;color:var(--deep);margin:0 0 8px}.description{color:var(--muted);line-height:1.6}
+.columns{display:grid;grid-template-columns:1fr 1.4fr;gap:24px;margin-top:24px}.panel{background:#f8f5ee;border:1px solid var(--line);padding:18px;border-radius:15px}.panel h3{margin-top:0;color:var(--deep)}
+.modebar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.modebar button{flex:1;min-width:140px;padding:15px;border-radius:14px}.modebar button.active{background:var(--deep);outline:3px solid #d9c89f}
+.servings{display:flex;align-items:center;gap:12px;margin:15px 0;font:14px Arial,sans-serif}.servings button{padding:7px 13px}.ingredients{padding-left:20px;line-height:1.9}.steps{line-height:1.8;padding-left:22px}.tag{display:inline-block;background:#e9eee5;color:var(--deep);padding:5px 10px;border-radius:20px;font:11px Arial,sans-serif;margin:3px}
+.admin{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}.admin h2{color:var(--deep)}label{display:block;font:13px Arial,sans-serif;color:var(--deep);margin:13px 0 5px}input,textarea,select{width:100%;padding:11px;border:1px solid #d9d2c5;border-radius:9px;background:#fffdf9;font:14px Arial,sans-serif;color:var(--ink)}textarea{min-height:95px;resize:vertical}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.small{font:12px Arial,sans-serif;color:var(--muted);line-height:1.5}.hidden{display:none!important}footer{text-align:center;color:var(--muted);padding:30px;font:12px Arial,sans-serif}
+@media(max-width:680px){.columns,.formgrid{grid-template-columns:1fr}.detail h2{font-size:27px}nav{position:static}}
+</style>
+</head>
+<body>
+<header><h1 class="brand">MIX LIEBE</h1><p class="subtitle">MIT LIEBE KOCHEN &amp; BACKEN</p></header>
+<nav>
+<button onclick="showPage('home')">Startseite</button>
+<button class="secondary" onclick="showPage('recipes')">Alle Rezepte</button>
+<button class="secondary" onclick="showPage('admin')">Rezepte bearbeiten</button>
+</nav>
+<main>
+<section id="home">
+<div class="intro"><h2>Willkommen bei MIX LIEBE</h2><p>Schöne Rezepte zum Kochen und Backen – mit Liebe ausgewählt und für den Thermomix® TM7 oder den klassischen Kochtopf beschrieben.</p><button onclick="showPage('recipes')">Rezepte entdecken</button></div>
+<div id="homeGrid" class="grid"></div>
+</section>
+<section id="recipes" class="hidden"><div class="intro"><h2>Unsere Rezepte</h2><p>Wähle ein Rezept aus und entdecke beide Zubereitungsarten.</p></div><div id="recipeGrid" class="grid"></div></section>
+<section id="detail" class="hidden"></section>
+<section id="admin" class="hidden">
+<div class="admin">
+<h2>Rezept bearbeiten</h2>
+<p class="small">Hier kannst du Rezepte hinzufügen, ändern, löschen und ein Bild vom Gerät auswählen. Die Änderungen werden in diesem Browser gespeichert.</p>
+<input id="editId" type="hidden">
+<label>Rezeptname</label><input id="name" placeholder="z. B. Kürbissuppe mit Ingwer">
+<label>Kurze Beschreibung</label><textarea id="description" placeholder="Ein paar schöne Worte zum Rezept"></textarea>
+<div class="formgrid">
+<div><label>Vorbereitungszeit</label><input id="prep" placeholder="10 Min."></div>
+<div><label>Koch- / Backzeit</label><input id="cook" placeholder="20 Min."></div>
+<div><label>Herkunft</label><input id="origin" placeholder="z. B. Schweiz"></div>
+<div><label>Schwierigkeit</label><select id="difficulty"><option>Einfach</option><option>Mittel</option><option>Anspruchsvoll</option></select></div>
+<div><label>Kategorie</label><input id="category" placeholder="z. B. Suppe"></div>
+<div><label>Portionen</label><input id="servings" type="number" min="1" value="4"></div>
+</div>
+<label>Zutaten – eine Zutat pro Zeile, Menge und Einheit zuerst, z. B. 500|g|Kürbis</label><textarea id="ingredients" placeholder="500|g|Kürbis&#10;1|Stück|Zwiebel&#10;400|ml|Kokosmilch"></textarea>
+<label>Zubereitung Thermomix® TM7 – ein Schritt pro Zeile</label><textarea id="tm" placeholder="Zwiebel 5 Sek. / Stufe 5 zerkleinern."></textarea>
+<label>Zubereitung klassischer Kochtopf – ein Schritt pro Zeile</label><textarea id="pot" placeholder="Zwiebel fein würfeln und in etwas Öl andünsten."></textarea>
+<label>Tipps – ein Tipp pro Zeile</label><textarea id="tips" placeholder="Mit frischen Kräutern servieren."></textarea>
+<label>Rezeptbild vom Gerät auswählen</label><input id="photo" type="file" accept="image/*">
+<div class="actions"><button onclick="saveRecipe()">Rezept speichern</button><button class="secondary" onclick="clearForm()">Neues Rezept</button></div>
+<hr style="border:0;border-top:1px solid var(--line);margin:24px 0">
+<h3>Gespeicherte Rezepte</h3><div id="adminList"></div>
+<p class="small">Hinweis: Diese kostenlose Website speichert Änderungen vorerst nur in diesem Browser auf diesem Gerät. Sie werden nicht automatisch auf andere Geräte übertragen und sind nicht öffentlich für alle Besucher sichtbar.</p>
+</div>
+</section>
+</main>
+<footer>Mit Liebe gekocht · MIX LIEBE REZEPT</footer>
+<script>
+const starter=[{id:'kurbis',name:'Cremige Kürbissuppe mit Ingwer',description:'Cremige Hokkaido-Suppe mit einem Hauch Ingwer und Kokos – wärmt von innen.',prep:'10 Min.',cook:'20 Min.',origin:'Inspiration aus der Herbstküche',difficulty:'Einfach',category:'Suppe',servings:4,image:'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=1200&q=80',ingredients:[{q:600,u:'g',n:'Hokkaido-Kürbis'},{q:1,u:'Stück',n:'Zwiebel'},{q:1,u:'TL',n:'frischer Ingwer'},{q:400,u:'ml',n:'Gemüsebouillon'},{q:200,u:'ml',n:'Kokosmilch'}],tm:['Zwiebel und Ingwer in den Mixtopf geben und 5 Sek. / Stufe 5 zerkleinern.','Kürbis in Stücken und Bouillon zugeben. 20 Min. / 100 °C / Stufe 1 kochen.','Kokosmilch zugeben und 1 Min. langsam bis Stufe 8 pürieren. Vorsichtig heiss!'],pot:['Zwiebel und Ingwer fein hacken und in etwas Öl andünsten.','Kürbis würfeln, mit Bouillon zugeben und etwa 20 Minuten weich kochen.','Kokosmilch einrühren und die Suppe fein pürieren.'],tips:['Mit gerösteten Kürbiskernen und etwas Kokosmilch servieren.','Für eine mildere Variante etwas weniger Ingwer verwenden.'] }];
+let recipes=load();let current=null;let mode='tm';let portions=4;
+function load(){try{let x=JSON.parse(localStorage.getItem('mixLiebeRecipes'));return Array.isArray(x)&&x.length?x:starter}catch(e){return starter}}
+function persist(){localStorage.setItem('mixLiebeRecipes',JSON.stringify(recipes))}
+function showPage(id){['home','recipes','detail','admin'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));if(id==='home')renderCards('homeGrid');if(id==='recipes')renderCards('recipeGrid');if(id==='admin')renderAdmin();window.scrollTo(0,0)}
+function renderCards(target){document.getElementById(target).innerHTML=recipes.map(r=>`<article class="card"><img src="${esc(r.image||'')}" alt=""><div class="cardbody"><span class="tag">${esc(r.category||'Rezept')}</span><h3>${esc(r.name)}</h3><p class="meta">Vorbereitung: ${esc(r.prep)} · Koch-/Backzeit: ${esc(r.cook)}<br>${esc(r.difficulty)} · ${esc(r.origin)}</p><button onclick="openRecipe('${r.id}')">Rezept ansehen</button></div></article>`).join('')}
+function openRecipe(id){current=recipes.find(r=>r.id===id);if(!current)return;portions=Number(current.servings)||4;mode='tm';renderDetail();showPage('detail')}
+function renderDetail(){let r=current;let factor=portions/(Number(r.servings)||4);let ingredients=(r.ingredients||[]).map(x=>`<li>${formatQty(Number(x.q)*factor)} ${esc(x.u)} ${esc(x.n)}</li>`).join('');let steps=(mode==='tm'?r.tm:r.pot)||[];document.getElementById('detail').innerHTML=`<article class="detail"><img class="hero" src="${esc(r.image||'')}" alt=""><div class="detailcontent"><button class="secondary" onclick="showPage('recipes')">← Zurück zu den Rezepten</button><h2>${esc(r.name)}</h2><p class="description">${esc(r.description||'')}</p><p class="meta">Vorbereitung: ${esc(r.prep)} · Koch-/Backzeit: ${esc(r.cook)} · ${esc(r.difficulty)} · ${esc(r.origin)}</p><div class="modebar"><button class="${mode==='pot'?'active':''}" onclick="setMode('pot')">KOCHTOPF</button><button class="${mode==='tm'?'active':''}" onclick="setMode('tm')">THERMOMIX® TM7</button></div><div class="servings"><b>Portionen</b><button class="secondary" onclick="changePortions(-1)">−</button><b>${portions}</b><button class="secondary" onclick="changePortions(1)">+</button></div><div class="columns"><section class="panel"><h3>Zutaten</h3><ul class="ingredients">${ingredients}</ul></section><section class="panel"><h3>Zubereitung ${mode==='tm'?'Thermomix® TM7':'klassischer Kochtopf'}</h3><ol class="steps">${steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol><h3>Tipps</h3><ul>${(r.tips||[]).map(t=>`<li>${esc(t)}</li>`).join('')}</ul></section></div></div></article>`}
+function setMode(m){mode=m;renderDetail()}function changePortions(n){portions=Math.max(1,Math.min(30,portions+n));renderDetail()}
+function formatQty(n){return Number.isInteger(n)?n:String(Math.round(n*100)/100).replace('.',',')}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function lines(id){return document.getElementById(id).value.split('\n').map(x=>x.trim()).filter(Boolean)}
+function saveRecipe(){let id=document.getElementById('editId').value||('r'+Date.now());let old=recipes.find(x=>x.id===id);let file=document.getElementById('photo').files[0];let base={id,name:val('name'),description:val('description'),prep:val('prep'),cook:val('cook'),origin:val('origin'),difficulty:val('difficulty'),category:val('category'),servings:Math.max(1,Number(val('servings'))||4),ingredients:lines('ingredients').map(line=>{let p=line.split('|');return{q:Number((p[0]||'0').replace(',','.'))||0,u:p[1]||'',n:p.slice(2).join('|')||p[0]}}),tm:lines('tm'),pot:lines('pot'),tips:lines('tips'),image:old?.image||''};if(!base.name){alert('Bitte gib einen Rezeptnamen ein.');return}if(file){let reader=new FileReader();reader.onload=()=>{base.image=reader.result;put(base)};reader.readAsDataURL(file)}else put(base)}
+function val(id){return document.getElementById(id).value.trim()}
+function put(r){let i=recipes.findIndex(x=>x.id===r.id);if(i>=0)recipes[i]=r;else recipes.push(r);persist();clearForm();renderAdmin();alert('Rezept wurde in diesem Browser gespeichert.')}
+function clearForm(){document.querySelectorAll('#admin input:not([type=file]),#admin textarea').forEach(x=>x.value='');document.getElementById('editId').value='';document.getElementById('servings').value=4;document.getElementById('difficulty').value='Einfach';document.getElementById('photo').value=''}
+function editRecipe(id){let r=recipes.find(x=>x.id===id);if(!r)return;document.getElementById('editId').value=r.id;['name','description','prep','cook','origin','difficulty','category','servings'].forEach(k=>document.getElementById(k).value=r[k]??'');document.getElementById('ingredients').value=(r.ingredients||[]).map(x=>`${x.q}|${x.u}|${x.n}`).join('\n');document.getElementById('tm').value=(r.tm||[]).join('\n');document.getElementById('pot').value=(r.pot||[]).join('\n');document.getElementById('tips').value=(r.tips||[]).join('\n');window.scrollTo(0,0)}
+function deleteRecipe(id){if(!confirm('Dieses Rezept wirklich löschen?'))return;recipes=recipes.filter(x=>x.id!==id);persist();renderAdmin()}
+function renderAdmin(){document.getElementById('adminList').innerHTML=recipes.map(r=>`<div style="display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0"><b>${esc(r.name)}</b><span><button class="secondary" onclick="editRecipe('${r.id}')">Bearbeiten</button> <button class="danger" onclick="deleteRecipe('${r.id}')">Löschen</button></span></div>`).join('')||'Noch keine Rezepte vorhanden.'}
+renderCards('homeGrid');
+</script>
+</body>
+</html>
