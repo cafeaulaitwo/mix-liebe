@@ -5,36 +5,113 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MIX LIEBE REZEPT</title>
+
 <style>
-:root{--cream:#f8f5ed;--green:#71836d;--dark:#344536;--gold:#b99a60}
-*{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--dark);font-family:Georgia,serif}
-header{text-align:center;padding:35px 15px;background:#e9e8dc}
-h1{font-size:clamp(30px,7vw,48px);letter-spacing:3px;margin:0}
-header p{color:var(--gold);letter-spacing:3px;font:12px Arial;margin-top:12px}
-nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:16px}
-button{background:var(--green);color:white;border:0;border-radius:25px;padding:12px 20px;cursor:pointer;font-size:14px}
-button:hover{background:var(--dark)}
-main{max-width:1000px;margin:auto;padding:20px}
-.hero{text-align:center;padding:45px 15px}
-.hero h2{font-size:32px}
-.hero p{line-height:1.8;max-width:650px;margin:15px auto 25px}
-h2,h3{color:var(--dark)}
-.section-title{text-align:center;margin:35px 0}
-.recipes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 4px 15px #00000010}
-.card img{width:100%;height:190px;object-fit:cover}
-.card-content{padding:18px}
-.card h3{margin-top:0}
-.card p{line-height:1.6}
-.detail{background:white;border-radius:15px;padding:22px;margin-top:20px;line-height:1.8}
-.detail img{width:100%;max-height:350px;object-fit:cover;border-radius:12px}
-input,textarea,select{width:100%;padding:12px;margin:7px 0 15px;border:1px solid #ccc;border-radius:8px;font:15px Arial}
-label{font-weight:bold}
-.hidden{display:none}
-footer{text-align:center;padding:35px;color:#71836d}
+:root {
+  --creme:#f8f5ed;
+  --gruen:#71836d;
+  --dunkel:#344536;
+  --gold:#b99a60;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:var(--creme);
+  color:var(--dunkel);
+  font-family:Georgia,serif;
+}
+header {
+  text-align:center;
+  padding:38px 15px;
+  background:#e9e8dc;
+}
+h1 {
+  font-size:clamp(30px,7vw,48px);
+  letter-spacing:3px;
+  margin:0;
+}
+header p {
+  color:var(--gold);
+  letter-spacing:3px;
+  font:12px Arial;
+  margin-top:12px;
+}
+nav {
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  padding:16px;
+}
+button {
+  background:var(--gruen);
+  color:white;
+  border:0;
+  border-radius:25px;
+  padding:12px 20px;
+  cursor:pointer;
+  font-size:14px;
+}
+button:hover {background:var(--dunkel)}
+main {max-width:1000px;margin:auto;padding:20px}
+.hero {text-align:center;padding:45px 15px}
+.hero h2 {font-size:32px}
+.hero p {
+  line-height:1.8;
+  max-width:650px;
+  margin:15px auto 25px;
+}
+.section-title {text-align:center;margin:35px 0}
+.recipes {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+.card {
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 4px 15px #00000010;
+}
+.card img {
+  width:100%;
+  height:210px;
+  object-fit:cover;
+}
+.card-content {padding:18px}
+.card h3 {margin-top:0}
+.card p {line-height:1.6}
+.detail {
+  background:white;
+  border-radius:15px;
+  padding:22px;
+  margin-top:20px;
+  line-height:1.8;
+}
+.detail img {
+  width:100%;
+  max-height:350px;
+  object-fit:cover;
+  border-radius:12px;
+}
+input,textarea {
+  width:100%;
+  padding:12px;
+  margin:7px 0 15px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font:15px Arial;
+}
+label {font-weight:bold}
+.hidden {display:none}
+footer {
+  text-align:center;
+  padding:35px;
+  color:var(--gruen);
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -49,13 +126,19 @@ footer{text-align:center;padding:35px;color:#71836d}
 </nav>
 
 <main>
+
 <section id="home">
 <div class="hero">
 <h2>Willkommen bei Mix Liebe Rezept</h2>
-<p>Schön, dass du hier bist! Bei Mix Liebe Rezept findest du einfache, leckere und alltagstaugliche Rezepte mit ganz viel Liebe zubereitet. Hier ist für jeden etwas dabei. So soll es sein.</p>
-<button onclick="showRecipes()">Rezepte entdecken</button>
+<p>
+Schön dass du hier bist! Bei Mix Liebe Rezept
+findest du einfache leckere und alltagstaugliche
+Rezepte mit ganz viel Liebe zubereitet.
+Hier ist für jeden etwas dabei.
+</p>
 </div>
-<h2 class="section-title">Unsere Lieblingsrezepte</h2>
+
+<h2 class="section-title">Meine Lieblingsrezepte</h2>
 <div class="recipes" id="homeCards"></div>
 </section>
 
@@ -65,43 +148,58 @@ footer{text-align:center;padding:35px;color:#71836d}
 </section>
 
 <section id="detail" class="hidden">
-<button onclick="showRecipes()">← Zurück zu den Rezepten</button>
+<button onclick="showRecipes()">← Zurück</button>
 <div id="detailContent" class="detail"></div>
 </section>
 
 <section id="admin" class="hidden">
 <h2 class="section-title">Rezepte bearbeiten</h2>
+
 <div class="detail">
 <h3>Neues Rezept hinzufügen</h3>
+
 <label>Rezeptname</label>
 <input id="newName" placeholder="Name des Rezepts">
+
 <label>Beschreibung</label>
-<textarea id="newDesc" placeholder="Kurze Beschreibung"></textarea>
+<textarea id="newDesc"></textarea>
+
 <label>Bild auswählen</label>
 <input id="newImage" type="file" accept="image/*">
+
 <label>Zutaten</label>
-<textarea id="newIngredients" placeholder="Zutaten, jede Zeile einzeln"></textarea>
+<textarea id="newIngredients"></textarea>
+
 <label>Thermomix TM7 Zubereitung</label>
-<textarea id="newTM" placeholder="Zubereitung im TM7"></textarea>
+<textarea id="newTM"></textarea>
+
 <label>Klassische Zubereitung</label>
-<textarea id="newClassic" placeholder="Zubereitung im Kochtopf"></textarea>
+<textarea id="newClassic"></textarea>
+
 <label>Tipps</label>
-<textarea id="newTips" placeholder="Deine Tipps"></textarea>
+<textarea id="newTips"></textarea>
+
 <button onclick="addRecipe()">Rezept speichern</button>
 </div>
+
 <div class="detail">
 <h3>Vorhandene Rezepte</h3>
 <div id="adminList"></div>
 </div>
 </section>
+
 </main>
 
-<footer>Mit Liebe gekocht · MIX LIEBE REZEPT</footer>
+<footer>
+Mit Liebe gekocht · MIX LIEBE REZEPT
+</footer>
 
 <script>
-const starter=[
+
+const starter = [
 {
-id:1,name:"Cremige Kürbissuppe mit Ingwer",
+id:1,
+name:"Cremige Kürbissuppe mit Ingwer",
 desc:"Cremige Hokkaido-Suppe mit einem Hauch Ingwer und Kokos – wärmt von innen.",
 image:"https://images.unsplash.com/photo-1506917728037-b6af01a7d403?w=900",
 ingredients:"1 Hokkaido-Kürbis\n1 Zwiebel\n1 Stück Ingwer\n400 ml Gemüsebouillon\n200 ml Kokosmilch\nSalz und Pfeffer",
@@ -110,91 +208,178 @@ classic:"Zwiebel und Ingwer fein schneiden und andünsten. Kürbis würfeln, Bou
 tips:"Mit Kürbiskernen, Kürbiskernöl oder etwas Kokosmilch servieren."
 },
 {
-id:2,name:"Schokoladenmousse",
+id:2,
+name:"Schokoladenmousse",
 desc:"Herrlich luftig, wunderbar cremig und mit intensivem Schokoladengeschmack.",
 image:"https://images.unsplash.com/photo-1511715112108-9acc6e3b9f14?w=900",
 ingredients:"300 g oder 500 g Rahm\n4 Eier\n36 g Zucker\n180 g dunkle Schokoladendrops",
-tm:"Schokolade vorsichtig schmelzen und etwas abkühlen lassen. Eier trennen. Eigelb mit Zucker cremig rühren und die Schokolade unterrühren. Rahm steif schlagen. Eiweiss steif schlagen. Rahm und Eischnee vorsichtig unter die Schokoladenmasse heben. Kühl stellen.",
-classic:"Schokolade im Wasserbad schmelzen und etwas abkühlen lassen. Eier trennen. Eigelb mit Zucker cremig schlagen und Schokolade unterrühren. Rahm steif schlagen. Eiweiss steif schlagen. Beides vorsichtig unterheben und kühl stellen.",
+tm:"Schokolade vorsichtig schmelzen und etwas abkühlen lassen. Eigelb mit Zucker cremig rühren und die Schokolade unterrühren. Rahm steif schlagen. Eiweiss steif schlagen. Rahm und Eischnee vorsichtig unter die Schokoladenmasse heben. Kühl stellen.",
+classic:"Schokolade im Wasserbad schmelzen und etwas abkühlen lassen. Eigelb mit Zucker cremig schlagen und Schokolade unterrühren. Rahm steif schlagen. Eiweiss steif schlagen. Beides vorsichtig unterheben und kühl stellen.",
 tips:"Mindestens 3 Stunden kühl stellen. Für eine besonders luftige Mousse alles vorsichtig unterheben. Wegen roher Eier gut gekühlt aufbewahren und möglichst frisch geniessen."
 }
 ];
 
-let recipes=[];
-try{recipes=JSON.parse(localStorage.getItem("mixliebe-rezepte"))||starter}catch(e){recipes=starter}
-starter.forEach(s=>{if(!recipes.some(r=>r.id===s.id))recipes.unshift(s)});
-function save(){localStorage.setItem("mixliebe-rezepte",JSON.stringify(recipes))}
-save();
+let recipes = [];
+try {
+ recipes = JSON.parse(localStorage.getItem("mixliebe-rezepte")) || starter;
+} catch(e) {
+ recipes = starter;
+}
 
-function hideAll(){
-["home","recipes","detail","admin"].forEach(id=>document.getElementById(id).classList.add("hidden"));
-}
-function home(){hideAll();document.getElementById("home").classList.remove("hidden");renderCards("homeCards")}
-function showRecipes(){hideAll();document.getElementById("recipes").classList.remove("hidden");renderCards("recipeCards")}
-function showAdmin(){hideAll();document.getElementById("admin").classList.remove("hidden");renderAdmin()}
-function renderCards(target){
-document.getElementById(target).innerHTML=recipes.map(r=>`
-<div class="card">
-<img src="${r.image||''}" alt="">
-<div class="card-content"><h3>${escapeHTML(r.name)}</h3>
-<p>${escapeHTML(r.desc||"Ein leckeres Rezept mit Liebe gemacht.")}</p>
-<button onclick="openRecipe(${r.id})">Rezept ansehen</button></div></div>`).join("");
-}
-function openRecipe(id){
-const r=recipes.find(x=>x.id===id);if(!r)return;
-hideAll();document.getElementById("detail").classList.remove("hidden");
-document.getElementById("detailContent").innerHTML=`
-<h2>${escapeHTML(r.name)}</h2><p>${escapeHTML(r.desc||"")}</p>
-<img src="${r.image||''}" alt="">
-<h3>Zutaten</h3><p>${formatText(r.ingredients)}</p>
-<h3>Thermomix® TM7</h3><p>${formatText(r.tm)}</p>
-<h3>Klassischer Kochtopf</h3><p>${formatText(r.classic)}</p>
-<h3>Meine Tipps</h3><p>${formatText(r.tips)}</p>`;
-}
-function formatText(t){return escapeHTML(t||"").replace(/\n/g,"<br>")}
-function escapeHTML(t){return String(t||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function addRecipe(){
-const name=document.getElementById("newName").value.trim();
-if(!name){alert("Bitte einen Rezeptnamen eingeben.");return}
-const file=document.getElementById("newImage").files[0];
-const add=image=>{
-recipes.push({
-id:Date.now(),name,
-desc:document.getElementById("newDesc").value,
-image,
-ingredients:document.getElementById("newIngredients").value,
-tm:document.getElementById("newTM").value,
-classic:document.getElementById("newClassic").value,
-tips:document.getElementById("newTips").value
+starter.forEach(s => {
+ if(!recipes.some(r => r.id === s.id)) recipes.unshift(s);
 });
-save();document.querySelectorAll("#admin input,#admin textarea").forEach(x=>x.value="");
-renderAdmin();alert("Rezept gespeichert!");
-};
-if(file){const reader=new FileReader();reader.onload=e=>add(e.target.result);reader.readAsDataURL(file)}
-else add("");
+
+function save() {
+ localStorage.setItem("mixliebe-rezepte",JSON.stringify(recipes));
 }
-function renderAdmin(){
-document.getElementById("adminList").innerHTML=recipes.map(r=>`
-<p><strong>${escapeHTML(r.name)}</strong>
-<button onclick="editRecipe(${r.id})">Bearbeiten</button>
-<button onclick="deleteRecipe(${r.id})">Löschen</button></p>`).join("");
+
+function hideAll() {
+ ["home","recipes","detail","admin"].forEach(id =>
+ document.getElementById(id).classList.add("hidden")
+ );
 }
-function deleteRecipe(id){
-if(!confirm("Dieses Rezept wirklich löschen?"))return;
-recipes=recipes.filter(r=>r.id!==id);save();renderAdmin();
+
+function home() {
+ hideAll();
+ document.getElementById("home").classList.remove("hidden");
+ renderCards("homeCards");
 }
-function editRecipe(id){
-const r=recipes.find(x=>x.id===id);if(!r)return;
-const name=prompt("Rezeptname:",r.name);if(name===null)return;
-r.name=name;
-r.desc=prompt("Beschreibung:",r.desc)||r.desc;
-r.ingredients=prompt("Zutaten:",r.ingredients)||r.ingredients;
-r.tm=prompt("TM7 Zubereitung:",r.tm)||r.tm;
-r.classic=prompt("Klassische Zubereitung:",r.classic)||r.classic;
-r.tips=prompt("Tipps:",r.tips)||r.tips;
-save();renderAdmin();
+
+function showRecipes() {
+ hideAll();
+ document.getElementById("recipes").classList.remove("hidden");
+ renderCards("recipeCards");
 }
+
+function showAdmin() {
+ hideAll();
+ document.getElementById("admin").classList.remove("hidden");
+ renderAdmin();
+}
+
+function escapeHTML(t) {
+ return String(t || "").replace(/[&<>"']/g,c => ({
+ "&":"&amp;","<":"&lt;",">":"&gt;",
+ '"':"&quot;","'":"&#39;"
+ }[c]));
+}
+
+function formatText(t) {
+ return escapeHTML(t || "").replace(/\n/g,"<br>");
+}
+
+function renderCards(target) {
+ document.getElementById(target).innerHTML = recipes.map(r => `
+ <div class="card">
+ <img src="${r.image || ""}" alt="">
+ <div class="card-content">
+ <h3>${escapeHTML(r.name)}</h3>
+ <p>${escapeHTML(r.desc || "")}</p>
+ <button onclick="openRecipe(${r.id})">Rezept ansehen</button>
+ </div>
+ </div>
+ `).join("");
+}
+
+function openRecipe(id) {
+ const r = recipes.find(x => x.id === id);
+ if(!r) return;
+
+ hideAll();
+ document.getElementById("detail").classList.remove("hidden");
+
+ document.getElementById("detailContent").innerHTML = `
+ <h2>${escapeHTML(r.name)}</h2>
+ <p>${escapeHTML(r.desc || "")}</p>
+ <img src="${r.image || ""}" alt="">
+ <h3>Zutaten</h3>
+ <p>${formatText(r.ingredients)}</p>
+ <h3>Thermomix® TM7</h3>
+ <p>${formatText(r.tm)}</p>
+ <h3>Klassischer Kochtopf</h3>
+ <p>${formatText(r.classic)}</p>
+ <h3>Meine Tipps</h3>
+ <p>${formatText(r.tips)}</p>
+ `;
+}
+
+function addRecipe() {
+ const name = document.getElementById("newName").value.trim();
+
+ if(!name) {
+  alert("Bitte einen Rezeptnamen eingeben.");
+  return;
+ }
+
+ const file = document.getElementById("newImage").files[0];
+
+ const add = image => {
+  recipes.push({
+   id:Date.now(),
+   name:name,
+   desc:document.getElementById("newDesc").value,
+   image:image,
+   ingredients:document.getElementById("newIngredients").value,
+   tm:document.getElementById("newTM").value,
+   classic:document.getElementById("newClassic").value,
+   tips:document.getElementById("newTips").value
+  });
+
+  save();
+  document.querySelectorAll("#admin input,#admin textarea").forEach(x => x.value = "");
+  renderAdmin();
+  alert("Rezept gespeichert!");
+ };
+
+ if(file) {
+  const reader = new FileReader();
+  reader.onload = e => add(e.target.result);
+  reader.readAsDataURL(file);
+ } else {
+  add("");
+ }
+}
+
+function renderAdmin() {
+ document.getElementById("adminList").innerHTML = recipes.map(r => `
+ <p>
+ <strong>${escapeHTML(r.name)}</strong><br>
+ <button onclick="editRecipe(${r.id})">Bearbeiten</button>
+ <button onclick="deleteRecipe(${r.id})">Löschen</button>
+ </p>
+ `).join("");
+}
+
+function deleteRecipe(id) {
+ if(!confirm("Dieses Rezept wirklich löschen?")) return;
+ recipes = recipes.filter(r => r.id !== id);
+ save();
+ renderAdmin();
+}
+
+function editRecipe(id) {
+ const r = recipes.find(x => x.id === id);
+ if(!r) return;
+
+ const name = prompt("Rezeptname:",r.name);
+ if(name === null) return;
+
+ r.name = name;
+ r.desc = prompt("Beschreibung:",r.desc) ?? r.desc;
+ r.ingredients = prompt("Zutaten:",r.ingredients) ?? r.ingredients;
+ r.tm = prompt("TM7 Zubereitung:",r.tm) ?? r.tm;
+ r.classic = prompt("Klassische Zubereitung:",r.classic) ?? r.classic;
+ r.tips = prompt("Tipps:",r.tips) ?? r.tips;
+
+ save();
+ renderAdmin();
+}
+
+save();
 home();
+
 </script>
 </body>
 </html>
+
