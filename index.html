@@ -1,92 +1,200 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f6f2e9">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MIX LIEBE REZEPT</title>
-<!-- Aktualisiert: Schokoladenmousse in der Rezeptliste -->
 <style>
-:root{--cream:#f7f3eb;--paper:#fffdf8;--green:#667b62;--deep:#344b3b;--gold:#b39455;--ink:#30352f;--muted:#77786f;--line:#e7e0d3}
-*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif}
-header{background:linear-gradient(135deg,#344b3b,#71846b);color:#fff;padding:34px 18px 28px;text-align:center}
-.brand{font-size:clamp(30px,7vw,48px);letter-spacing:3px;margin:0}.subtitle{font:12px Arial,sans-serif;letter-spacing:4px;margin:10px 0 0;color:#f0e6d1}
-nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:14px;background:#fffdf8;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-button,.button{border:0;border-radius:24px;padding:11px 17px;background:var(--green);color:#fff;font: bold 13px Arial,sans-serif;cursor:pointer}
-button.secondary{background:#eee8dc;color:var(--deep)}button.gold{background:var(--gold)}button.danger{background:#9a5148}
-main{max-width:1050px;margin:28px auto;padding:0 16px 50px}.intro{text-align:center;margin:24px auto 32px;max-width:680px}.intro h2{color:var(--deep);font-size:30px;margin-bottom:8px}.intro p{color:var(--muted);line-height:1.6}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:20px}.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 5px 18px #45351b0b}.card img{width:100%;height:190px;object-fit:cover;background:#e6e0d4}.cardbody{padding:17px}.card h3{color:var(--deep);font-size:22px;margin:0 0 8px}.meta{font:12px Arial,sans-serif;color:var(--muted);line-height:1.8}
-.detail{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden}.hero{width:100%;max-height:390px;object-fit:cover;display:block;background:#e6e0d4}.detailcontent{padding:clamp(18px,4vw,34px)}.detail h2{font-size:32px;color:var(--deep);margin:0 0 8px}.description{color:var(--muted);line-height:1.6}
-.columns{display:grid;grid-template-columns:1fr 1.4fr;gap:24px;margin-top:24px}.panel{background:#f8f5ee;border:1px solid var(--line);padding:18px;border-radius:15px}.panel h3{margin-top:0;color:var(--deep)}
-.modebar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.modebar button{flex:1;min-width:140px;padding:15px;border-radius:14px}.modebar button.active{background:var(--deep);outline:3px solid #d9c89f}
-.servings{display:flex;align-items:center;gap:12px;margin:15px 0;font:14px Arial,sans-serif}.servings button{padding:7px 13px}.ingredients{padding-left:20px;line-height:1.9}.steps{line-height:1.8;padding-left:22px}.tag{display:inline-block;background:#e9eee5;color:var(--deep);padding:5px 10px;border-radius:20px;font:11px Arial,sans-serif;margin:3px}
-.admin{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}.admin h2{color:var(--deep)}label{display:block;font:13px Arial,sans-serif;color:var(--deep);margin:13px 0 5px}input,textarea,select{width:100%;padding:11px;border:1px solid #d9d2c5;border-radius:9px;background:#fffdf9;font:14px Arial,sans-serif;color:var(--ink)}textarea{min-height:95px;resize:vertical}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.small{font:12px Arial,sans-serif;color:var(--muted);line-height:1.5}.hidden{display:none!important}footer{text-align:center;color:var(--muted);padding:30px;font:12px Arial,sans-serif}
-@media(max-width:680px){.columns,.formgrid{grid-template-columns:1fr}.detail h2{font-size:27px}nav{position:static}}
+:root{--cream:#f8f5ed;--green:#71836d;--dark:#344536;--gold:#b99a60}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--dark);font-family:Georgia,serif}
+header{text-align:center;padding:35px 15px;background:#e9e8dc}
+h1{font-size:clamp(30px,7vw,48px);letter-spacing:3px;margin:0}
+header p{color:var(--gold);letter-spacing:3px;font:12px Arial;margin-top:12px}
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:16px}
+button{background:var(--green);color:white;border:0;border-radius:25px;padding:12px 20px;cursor:pointer;font-size:14px}
+button:hover{background:var(--dark)}
+main{max-width:1000px;margin:auto;padding:20px}
+.hero{text-align:center;padding:45px 15px}
+.hero h2{font-size:32px}
+.hero p{line-height:1.8;max-width:650px;margin:15px auto 25px}
+h2,h3{color:var(--dark)}
+.section-title{text-align:center;margin:35px 0}
+.recipes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 4px 15px #00000010}
+.card img{width:100%;height:190px;object-fit:cover}
+.card-content{padding:18px}
+.card h3{margin-top:0}
+.card p{line-height:1.6}
+.detail{background:white;border-radius:15px;padding:22px;margin-top:20px;line-height:1.8}
+.detail img{width:100%;max-height:350px;object-fit:cover;border-radius:12px}
+input,textarea,select{width:100%;padding:12px;margin:7px 0 15px;border:1px solid #ccc;border-radius:8px;font:15px Arial}
+label{font-weight:bold}
+.hidden{display:none}
+footer{text-align:center;padding:35px;color:#71836d}
 </style>
 </head>
 <body>
-<header><h1 class="brand">MIX LIEBE</h1><p class="subtitle">MIT LIEBE KOCHEN &amp; BACKEN</p></header>
+
+<header>
+<h1>MIX LIEBE REZEPT</h1>
+<p>SCHNELL GEMIXT · EINFACH GENIESSEN</p>
+</header>
+
 <nav>
-<button onclick="showPage('home')">Startseite</button>
-<button class="secondary" onclick="showPage('recipes')">Alle Rezepte</button>
-<button class="secondary" onclick="showPage('admin')">Rezepte bearbeiten</button>
+<button onclick="home()">Startseite</button>
+<button onclick="showRecipes()">Alle Rezepte</button>
+<button onclick="showAdmin()">Rezepte bearbeiten</button>
 </nav>
+
 <main>
 <section id="home">
-<div class="intro"><h2>Willkommen bei MIX LIEBE</h2><p>Schöne Rezepte zum Kochen und Backen – mit Liebe ausgewählt und für den Thermomix® TM7 oder den klassischen Kochtopf beschrieben.</p><button onclick="showPage('recipes')">Rezepte entdecken</button></div>
-<div id="homeGrid" class="grid"></div>
-</section>
-<section id="recipes" class="hidden"><div class="intro"><h2>Unsere Rezepte</h2><p>Wähle ein Rezept aus und entdecke beide Zubereitungsarten.</p></div><div id="recipeGrid" class="grid"></div></section>
-<section id="detail" class="hidden"></section>
-<section id="admin" class="hidden">
-<div class="admin">
-<h2>Rezept bearbeiten</h2>
-<p class="small">Hier kannst du Rezepte hinzufügen, ändern, löschen und ein Bild vom Gerät auswählen. Die Änderungen werden in diesem Browser gespeichert.</p>
-<input id="editId" type="hidden">
-<label>Rezeptname</label><input id="name" placeholder="z. B. Kürbissuppe mit Ingwer">
-<label>Kurze Beschreibung</label><textarea id="description" placeholder="Ein paar schöne Worte zum Rezept"></textarea>
-<div class="formgrid">
-<div><label>Vorbereitungszeit</label><input id="prep" placeholder="10 Min."></div>
-<div><label>Koch- / Backzeit</label><input id="cook" placeholder="20 Min."></div>
-<div><label>Herkunft</label><input id="origin" placeholder="z. B. Schweiz"></div>
-<div><label>Schwierigkeit</label><select id="difficulty"><option>Einfach</option><option>Mittel</option><option>Anspruchsvoll</option></select></div>
-<div><label>Kategorie</label><input id="category" placeholder="z. B. Suppe"></div>
-<div><label>Portionen</label><input id="servings" type="number" min="1" value="4"></div>
+<div class="hero">
+<h2>Willkommen bei Mix Liebe Rezept</h2>
+<p>Schön, dass du hier bist! Bei Mix Liebe Rezept findest du einfache, leckere und alltagstaugliche Rezepte mit ganz viel Liebe zubereitet. Hier ist für jeden etwas dabei. So soll es sein.</p>
+<button onclick="showRecipes()">Rezepte entdecken</button>
 </div>
-<label>Zutaten – eine Zutat pro Zeile, Menge und Einheit zuerst, z. B. 500|g|Kürbis</label><textarea id="ingredients" placeholder="500|g|Kürbis&#10;1|Stück|Zwiebel&#10;400|ml|Kokosmilch"></textarea>
-<label>Zubereitung Thermomix® TM7 – ein Schritt pro Zeile</label><textarea id="tm" placeholder="Zwiebel 5 Sek. / Stufe 5 zerkleinern."></textarea>
-<label>Zubereitung klassischer Kochtopf – ein Schritt pro Zeile</label><textarea id="pot" placeholder="Zwiebel fein würfeln und in etwas Öl andünsten."></textarea>
-<label>Tipps – ein Tipp pro Zeile</label><textarea id="tips" placeholder="Mit frischen Kräutern servieren."></textarea>
-<label>Rezeptbild vom Gerät auswählen</label><input id="photo" type="file" accept="image/*">
-<div class="actions"><button onclick="saveRecipe()">Rezept speichern</button><button class="secondary" onclick="clearForm()">Neues Rezept</button></div>
-<hr style="border:0;border-top:1px solid var(--line);margin:24px 0">
-<h3>Gespeicherte Rezepte</h3><div id="adminList"></div>
-<p class="small">Hinweis: Diese kostenlose Website speichert Änderungen vorerst nur in diesem Browser auf diesem Gerät. Sie werden nicht automatisch auf andere Geräte übertragen und sind nicht öffentlich für alle Besucher sichtbar.</p>
+<h2 class="section-title">Unsere Lieblingsrezepte</h2>
+<div class="recipes" id="homeCards"></div>
+</section>
+
+<section id="recipes" class="hidden">
+<h2 class="section-title">Alle Rezepte</h2>
+<div class="recipes" id="recipeCards"></div>
+</section>
+
+<section id="detail" class="hidden">
+<button onclick="showRecipes()">← Zurück zu den Rezepten</button>
+<div id="detailContent" class="detail"></div>
+</section>
+
+<section id="admin" class="hidden">
+<h2 class="section-title">Rezepte bearbeiten</h2>
+<div class="detail">
+<h3>Neues Rezept hinzufügen</h3>
+<label>Rezeptname</label>
+<input id="newName" placeholder="Name des Rezepts">
+<label>Beschreibung</label>
+<textarea id="newDesc" placeholder="Kurze Beschreibung"></textarea>
+<label>Bild auswählen</label>
+<input id="newImage" type="file" accept="image/*">
+<label>Zutaten</label>
+<textarea id="newIngredients" placeholder="Zutaten, jede Zeile einzeln"></textarea>
+<label>Thermomix TM7 Zubereitung</label>
+<textarea id="newTM" placeholder="Zubereitung im TM7"></textarea>
+<label>Klassische Zubereitung</label>
+<textarea id="newClassic" placeholder="Zubereitung im Kochtopf"></textarea>
+<label>Tipps</label>
+<textarea id="newTips" placeholder="Deine Tipps"></textarea>
+<button onclick="addRecipe()">Rezept speichern</button>
+</div>
+<div class="detail">
+<h3>Vorhandene Rezepte</h3>
+<div id="adminList"></div>
 </div>
 </section>
 </main>
+
 <footer>Mit Liebe gekocht · MIX LIEBE REZEPT</footer>
+
 <script>
-const starter=[{id:'kurbis',name:'Cremige Kürbissuppe mit Ingwer',description:'Cremige Hokkaido-Suppe mit einem Hauch Ingwer und Kokos – wärmt von innen.',prep:'10 Min.',cook:'20 Min.',origin:'Inspiration aus der Herbstküche',difficulty:'Einfach',category:'Suppe',servings:4,image:'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=1200&q=80',ingredients:[{q:600,u:'g',n:'Hokkaido-Kürbis'},{q:1,u:'Stück',n:'Zwiebel'},{q:1,u:'TL',n:'frischer Ingwer'},{q:400,u:'ml',n:'Gemüsebouillon'},{q:200,u:'ml',n:'Kokosmilch'}],tm:['Zwiebel und Ingwer in den Mixtopf geben und 5 Sek. / Stufe 5 zerkleinern.','Kürbis in Stücken und Bouillon zugeben. 20 Min. / 100 °C / Stufe 1 kochen.','Kokosmilch zugeben und 1 Min. langsam bis Stufe 8 pürieren. Vorsichtig heiss!'],pot:['Zwiebel und Ingwer fein hacken und in etwas Öl andünsten.','Kürbis würfeln, mit Bouillon zugeben und etwa 20 Minuten weich kochen.','Kokosmilch einrühren und die Suppe fein pürieren.'],tips:['Mit gerösteten Kürbiskernen und etwas Kokosmilch servieren.','Für eine mildere Variante etwas weniger Ingwer verwenden.'] },{id:'schokomousse',name:'Schokoladenmousse',description:'Herrlich luftig, wunderbar cremig und mit intensivem Schokoladengeschmack – ein feines Dessert für jeden Anlass.',prep:'20 Min.',cook:'15 Min.',origin:'Schweiz',difficulty:'Einfach',category:'Dessert / Süssspeisen',servings:4,image:'https://images.unsplash.com/photo-1511715112108-9b5f7b5f6f5b?auto=format&fit=crop&w=1200&q=80',creamChoice:500,ingredients:[{q:500,u:'g',n:'Rahm (wählbar: 300 g oder 500 g)'},{q:4,u:'Stück',n:'Eier'},{q:36,u:'g',n:'Zucker'},{q:180,u:'g',n:'dunkle Schokoladendrops'}],tm:['Rühraufsatz einsetzen. Den gut gekühlten Rahm in den Mixtopf geben und auf Stufe 3 unter Sichtkontakt steif schlagen. Anschliessend in eine Schüssel umfüllen und kühl stellen.','4 Eier und 36 g Zucker in den Mixtopf geben. Rühraufsatz einsetzen und 8 Min. / 70 °C / Stufe 3 erhitzen. Prüfen, dass die Eiermasse tatsächlich mindestens 70 °C erreicht.','Anschliessend 3 Min. / Stufe 4 ohne Temperatur schaumig schlagen. Die Eiermasse in eine Schüssel umfüllen.','Rühraufsatz entfernen. 180 g dunkle Schokoladendrops direkt in den Mixtopf geben und 5 Min. / 50 °C / Stufe 2 schmelzen. Falls nötig, weitere 1–2 Minuten schmelzen. Anschliessend etwas abkühlen lassen.','Die schaumige Eier-Zucker-Masse zur lauwarmen Schokolade in den Mixtopf geben und 15 Sek. / Stufe 2 vermischen.','Den geschlagenen Rahm direkt in den Mixtopf geben und 10–15 Sek. / Stufe 2, ohne Linkslauf und ohne Temperatur, vorsichtig vermischen. Falls nötig, mit dem Spatel kurz nachrühren.','Die fertige Schokoladenmousse in Dessertgläser oder eine grosse Schüssel füllen und mindestens 4 Stunden im Kühlschrank fest werden lassen.'],pot:['Den gut gekühlten Rahm mit dem Handmixer steif schlagen. Anschliessend kühl stellen.','4 Eier und 36 g Zucker in eine hitzebeständige Schüssel geben. Über einem warmen Wasserbad unter ständigem Rühren auf mindestens 70 °C erhitzen.','Die Eier-Zucker-Masse vom Wasserbad nehmen und mit dem Handmixer etwa 3 Minuten hell und schaumig schlagen.','180 g dunkle Schokoladendrops in einer hitzebeständigen Schüssel über einem warmen Wasserbad langsam schmelzen lassen. Anschliessend etwas abkühlen lassen.','Die schaumige Eier-Zucker-Masse zur lauwarmen Schokolade geben und mit dem Handmixer auf niedriger Stufe kurz vermischen.','Den geschlagenen Rahm zur Schokoladenmasse geben und mit dem Handmixer auf niedrigster Stufe kurz verrühren, bis eine gleichmässige, cremige Mousse entsteht.','Die Schokoladenmousse in Dessertgläser oder eine grosse Schüssel füllen und mindestens 4 Stunden im Kühlschrank fest werden lassen.'],tips:['300 g Rahm: Die Mousse wird fester und schmeckt intensiver nach Schokolade.','500 g Rahm: Die Mousse wird besonders luftig, cremig und mild.','Schokoladendrops können direkt geschmolzen werden, ohne sie vorher zu zerkleinern.','Schokolade vor dem Vermischen etwas abkühlen lassen, damit die Masse schön cremig bleibt.','Rahm nur kurz weitermixen, damit die luftige Konsistenz erhalten bleibt.','Mit Schokoladenraspeln, frischen Beeren oder einem Tupfer Schlagrahm dekorieren.','Gut abgedeckt im Kühlschrank aufbewahren und möglichst innerhalb von 24 Stunden geniessen.']}];
-let recipes=load();let current=null;let mode='tm';let portions=4;
-function load(){try{let x=JSON.parse(localStorage.getItem('mixLiebeRecipes'));if(Array.isArray(x)&&x.length){let merged=[...x];starter.forEach(r=>{if(!merged.some(v=>v.id===r.id))merged.push(r)});return merged}return starter}catch(e){return starter}}
-function persist(){localStorage.setItem('mixLiebeRecipes',JSON.stringify(recipes))}
-function showPage(id){['home','recipes','detail','admin'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));if(id==='home')renderCards('homeGrid');if(id==='recipes')renderCards('recipeGrid');if(id==='admin')renderAdmin();window.scrollTo(0,0)}
-function renderCards(target){document.getElementById(target).innerHTML=recipes.map(r=>`<article class="card"><img src="${esc(r.image||'')}" alt=""><div class="cardbody"><span class="tag">${esc(r.category||'Rezept')}</span><h3>${esc(r.name)}</h3><p class="meta">Vorbereitung: ${esc(r.prep)} · Koch-/Backzeit: ${esc(r.cook)}<br>${esc(r.difficulty)} · ${esc(r.origin)}</p><button onclick="openRecipe('${r.id}')">Rezept ansehen</button></div></article>`).join('')}
-function openRecipe(id){current=recipes.find(r=>r.id===id);if(!current)return;portions=Number(current.servings)||4;mode='tm';renderDetail();showPage('detail')}
-function renderDetail(){let r=current;let factor=portions/(Number(r.servings)||4);let ingredients=(r.ingredients||[]).map(x=>{let q=(r.id==='schokomousse'&&x.n.startsWith('Rahm'))?Number(r.creamChoice||500):Number(x.q)*factor;let n=(r.id==='schokomousse'&&x.n.startsWith('Rahm'))?'Rahm':x.n;return `<li>${formatQty(q)} ${esc(x.u)} ${esc(n)}</li>`}).join('');let steps=(mode==='tm'?r.tm:r.pot)||[];document.getElementById('detail').innerHTML=`<article class="detail"><img class="hero" src="${esc(r.image||'')}" alt=""><div class="detailcontent"><button class="secondary" onclick="showPage('recipes')">← Zurück zu den Rezepten</button><h2>${esc(r.name)}</h2><p class="description">${esc(r.description||'')}</p><p class="meta">Vorbereitung: ${esc(r.prep)} · Koch-/Backzeit: ${esc(r.cook)} · ${esc(r.difficulty)} · ${esc(r.origin)}</p><div class="modebar"><button class="${mode==='pot'?'active':''}" onclick="setMode('pot')">KOCHTOPF</button><button class="${mode==='tm'?'active':''}" onclick="setMode('tm')">THERMOMIX® TM7</button></div>${r.id==='schokomousse'?`<div class="servings"><b>Rahmmenge</b><button class="${Number(r.creamChoice||500)===300?'':'secondary'}" onclick="setCream(300)">300 g Rahm</button><button class="${Number(r.creamChoice||500)===500?'':'secondary'}" onclick="setCream(500)">500 g Rahm</button></div>`:''}<div class="servings"><b>Portionen</b><button class="secondary" onclick="changePortions(-1)">−</button><b>${portions}</b><button class="secondary" onclick="changePortions(1)">+</button></div><div class="columns"><section class="panel"><h3>Zutaten</h3><ul class="ingredients">${ingredients}</ul></section><section class="panel"><h3>Zubereitung ${mode==='tm'?'Thermomix® TM7':'klassischer Kochtopf'}</h3><ol class="steps">${steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol><h3>Tipps</h3><ul>${(r.tips||[]).map(t=>`<li>${esc(t)}</li>`).join('')}</ul></section></div></div></article>`}
-function setMode(m){mode=m;renderDetail()}function setCream(n){current.creamChoice=n;renderDetail()}function changePortions(n){portions=Math.max(1,Math.min(30,portions+n));renderDetail()}
-function formatQty(n){return Number.isInteger(n)?n:String(Math.round(n*100)/100).replace('.',',')}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function lines(id){return document.getElementById(id).value.split('\n').map(x=>x.trim()).filter(Boolean)}
-function saveRecipe(){let id=document.getElementById('editId').value||('r'+Date.now());let old=recipes.find(x=>x.id===id);let file=document.getElementById('photo').files[0];let base={id,name:val('name'),description:val('description'),prep:val('prep'),cook:val('cook'),origin:val('origin'),difficulty:val('difficulty'),category:val('category'),servings:Math.max(1,Number(val('servings'))||4),ingredients:lines('ingredients').map(line=>{let p=line.split('|');return{q:Number((p[0]||'0').replace(',','.'))||0,u:p[1]||'',n:p.slice(2).join('|')||p[0]}}),tm:lines('tm'),pot:lines('pot'),tips:lines('tips'),image:old?.image||''};if(!base.name){alert('Bitte gib einen Rezeptnamen ein.');return}if(file){let reader=new FileReader();reader.onload=()=>{base.image=reader.result;put(base)};reader.readAsDataURL(file)}else put(base)}
-function val(id){return document.getElementById(id).value.trim()}
-function put(r){let i=recipes.findIndex(x=>x.id===r.id);if(i>=0)recipes[i]=r;else recipes.push(r);persist();clearForm();renderAdmin();alert('Rezept wurde in diesem Browser gespeichert.')}
-function clearForm(){document.querySelectorAll('#admin input:not([type=file]),#admin textarea').forEach(x=>x.value='');document.getElementById('editId').value='';document.getElementById('servings').value=4;document.getElementById('difficulty').value='Einfach';document.getElementById('photo').value=''}
-function editRecipe(id){let r=recipes.find(x=>x.id===id);if(!r)return;document.getElementById('editId').value=r.id;['name','description','prep','cook','origin','difficulty','category','servings'].forEach(k=>document.getElementById(k).value=r[k]??'');document.getElementById('ingredients').value=(r.ingredients||[]).map(x=>`${x.q}|${x.u}|${x.n}`).join('\n');document.getElementById('tm').value=(r.tm||[]).join('\n');document.getElementById('pot').value=(r.pot||[]).join('\n');document.getElementById('tips').value=(r.tips||[]).join('\n');window.scrollTo(0,0)}
-function deleteRecipe(id){if(!confirm('Dieses Rezept wirklich löschen?'))return;recipes=recipes.filter(x=>x.id!==id);persist();renderAdmin()}
-function renderAdmin(){document.getElementById('adminList').innerHTML=recipes.map(r=>`<div style="display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0"><b>${esc(r.name)}</b><span><button class="secondary" onclick="editRecipe('${r.id}')">Bearbeiten</button> <button class="danger" onclick="deleteRecipe('${r.id}')">Löschen</button></span></div>`).join('')||'Noch keine Rezepte vorhanden.'}
-renderCards('homeGrid');
+const starter=[
+{
+id:1,name:"Cremige Kürbissuppe mit Ingwer",
+desc:"Cremige Hokkaido-Suppe mit einem Hauch Ingwer und Kokos – wärmt von innen.",
+image:"https://images.unsplash.com/photo-1506917728037-b6af01a7d403?w=900",
+ingredients:"1 Hokkaido-Kürbis\n1 Zwiebel\n1 Stück Ingwer\n400 ml Gemüsebouillon\n200 ml Kokosmilch\nSalz und Pfeffer",
+tm:"Zwiebel und Ingwer 5 Sek. / Stufe 5 zerkleinern. Kürbisstücke und Bouillon dazugeben. 20 Min. / 100 °C / Stufe 1 kochen. Kokosmilch dazugeben und 1 Min. / Stufe 5–9 pürieren.",
+classic:"Zwiebel und Ingwer fein schneiden und andünsten. Kürbis würfeln, Bouillon dazugeben und etwa 20 Minuten weich kochen. Kokosmilch dazugeben und fein pürieren.",
+tips:"Mit Kürbiskernen, Kürbiskernöl oder etwas Kokosmilch servieren."
+},
+{
+id:2,name:"Schokoladenmousse",
+desc:"Herrlich luftig, wunderbar cremig und mit intensivem Schokoladengeschmack.",
+image:"https://images.unsplash.com/photo-1511715112108-9acc6e3b9f14?w=900",
+ingredients:"300 g oder 500 g Rahm\n4 Eier\n36 g Zucker\n180 g dunkle Schokoladendrops",
+tm:"Schokolade vorsichtig schmelzen und etwas abkühlen lassen. Eier trennen. Eigelb mit Zucker cremig rühren und die Schokolade unterrühren. Rahm steif schlagen. Eiweiss steif schlagen. Rahm und Eischnee vorsichtig unter die Schokoladenmasse heben. Kühl stellen.",
+classic:"Schokolade im Wasserbad schmelzen und etwas abkühlen lassen. Eier trennen. Eigelb mit Zucker cremig schlagen und Schokolade unterrühren. Rahm steif schlagen. Eiweiss steif schlagen. Beides vorsichtig unterheben und kühl stellen.",
+tips:"Mindestens 3 Stunden kühl stellen. Für eine besonders luftige Mousse alles vorsichtig unterheben. Wegen roher Eier gut gekühlt aufbewahren und möglichst frisch geniessen."
+}
+];
+
+let recipes=[];
+try{recipes=JSON.parse(localStorage.getItem("mixliebe-rezepte"))||starter}catch(e){recipes=starter}
+starter.forEach(s=>{if(!recipes.some(r=>r.id===s.id))recipes.unshift(s)});
+function save(){localStorage.setItem("mixliebe-rezepte",JSON.stringify(recipes))}
+save();
+
+function hideAll(){
+["home","recipes","detail","admin"].forEach(id=>document.getElementById(id).classList.add("hidden"));
+}
+function home(){hideAll();document.getElementById("home").classList.remove("hidden");renderCards("homeCards")}
+function showRecipes(){hideAll();document.getElementById("recipes").classList.remove("hidden");renderCards("recipeCards")}
+function showAdmin(){hideAll();document.getElementById("admin").classList.remove("hidden");renderAdmin()}
+function renderCards(target){
+document.getElementById(target).innerHTML=recipes.map(r=>`
+<div class="card">
+<img src="${r.image||''}" alt="">
+<div class="card-content"><h3>${escapeHTML(r.name)}</h3>
+<p>${escapeHTML(r.desc||"Ein leckeres Rezept mit Liebe gemacht.")}</p>
+<button onclick="openRecipe(${r.id})">Rezept ansehen</button></div></div>`).join("");
+}
+function openRecipe(id){
+const r=recipes.find(x=>x.id===id);if(!r)return;
+hideAll();document.getElementById("detail").classList.remove("hidden");
+document.getElementById("detailContent").innerHTML=`
+<h2>${escapeHTML(r.name)}</h2><p>${escapeHTML(r.desc||"")}</p>
+<img src="${r.image||''}" alt="">
+<h3>Zutaten</h3><p>${formatText(r.ingredients)}</p>
+<h3>Thermomix® TM7</h3><p>${formatText(r.tm)}</p>
+<h3>Klassischer Kochtopf</h3><p>${formatText(r.classic)}</p>
+<h3>Meine Tipps</h3><p>${formatText(r.tips)}</p>`;
+}
+function formatText(t){return escapeHTML(t||"").replace(/\n/g,"<br>")}
+function escapeHTML(t){return String(t||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function addRecipe(){
+const name=document.getElementById("newName").value.trim();
+if(!name){alert("Bitte einen Rezeptnamen eingeben.");return}
+const file=document.getElementById("newImage").files[0];
+const add=image=>{
+recipes.push({
+id:Date.now(),name,
+desc:document.getElementById("newDesc").value,
+image,
+ingredients:document.getElementById("newIngredients").value,
+tm:document.getElementById("newTM").value,
+classic:document.getElementById("newClassic").value,
+tips:document.getElementById("newTips").value
+});
+save();document.querySelectorAll("#admin input,#admin textarea").forEach(x=>x.value="");
+renderAdmin();alert("Rezept gespeichert!");
+};
+if(file){const reader=new FileReader();reader.onload=e=>add(e.target.result);reader.readAsDataURL(file)}
+else add("");
+}
+function renderAdmin(){
+document.getElementById("adminList").innerHTML=recipes.map(r=>`
+<p><strong>${escapeHTML(r.name)}</strong>
+<button onclick="editRecipe(${r.id})">Bearbeiten</button>
+<button onclick="deleteRecipe(${r.id})">Löschen</button></p>`).join("");
+}
+function deleteRecipe(id){
+if(!confirm("Dieses Rezept wirklich löschen?"))return;
+recipes=recipes.filter(r=>r.id!==id);save();renderAdmin();
+}
+function editRecipe(id){
+const r=recipes.find(x=>x.id===id);if(!r)return;
+const name=prompt("Rezeptname:",r.name);if(name===null)return;
+r.name=name;
+r.desc=prompt("Beschreibung:",r.desc)||r.desc;
+r.ingredients=prompt("Zutaten:",r.ingredients)||r.ingredients;
+r.tm=prompt("TM7 Zubereitung:",r.tm)||r.tm;
+r.classic=prompt("Klassische Zubereitung:",r.classic)||r.classic;
+r.tips=prompt("Tipps:",r.tips)||r.tips;
+save();renderAdmin();
+}
+home();
 </script>
 </body>
 </html>
